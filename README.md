@@ -46,10 +46,18 @@ Match
 Using dates in JSON
 =======
 JSON specification do NOT cover date type!
+
 There in no common practice to handle this.
-Some use number: new Date().getTime().
-Some use special format (ASP.NET, WCF): "\"\\/Date(" + this.getTime() + ")\\/\"";
-Following examples use ISO format:
+
+* Some use number: 
+   
+   new Date().getTime().
+   
+* Some use special format (ASP.NET, WCF): 
+   
+   "\"\\/Date(" + this.getTime() + ")\\/\"";
+   
+* Following examples use ISO format:
 
     //Convert all Date values to String in all properties of object.
     //Note: given example use IsoDate.toUTCString, alternative you can use IsoDate.toLocalString.
