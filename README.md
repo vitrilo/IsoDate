@@ -12,29 +12,30 @@ Why this need:
 Parsing
 =======
 UTC:
-isoDate.parse("1753-01-01T00:00:00Z");
+    isoDate.parse("1753-01-01T00:00:00Z");
 
 Local date(note: some browsers consider this as UTC):
-isoDate.parse("1753-01-01T00:00:00");
+    isoDate.parse("1753-01-01T00:00:00");
 
 Specified TZ:
-isoDate.parse("1753-01-01T00:00:00+30:00");
-isoDate.parse("1753-01-01T00:00:00+3000");
+    isoDate.parse("1753-01-01T00:00:00+30:00");
+    isoDate.parse("1753-01-01T00:00:00+3000");
 
 Formating
 =======
 
 UTC(same as w3c Date.toJSON()):
-isoDate.toUTCString(new Date());
+    isoDate.toUTCString(new Date());
 
 Local date (without TZ info):
-isoDate.toLocalString(new Date());
+    isoDate.toLocalString(new Date());
 
 Match
 =======
-if(isoDate.match("1753-01-01T00:00:00+30:00")){
+    
+    if(isoDate.match("1753-01-01T00:00:00+30:00")){
 	//provided text is ISO date
-};
+    };
 
 Using dates in JSON
 =======
@@ -44,9 +45,9 @@ Some use number: new Date().getTime().
 Some use special format (ASP.NET, WCF): "\"\\/Date(" + this.getTime() + ")\\/\"";
 Following examples use ISO format:
 
-//Convert all Date values to String in all properties of object.
-//Note: given example use IsoDate.toLocalString, alternative you can use IsoDate.toUTCString.
-function preJSON = function(obj, copyObj) {
+    //Convert all Date values to String in all properties of object.
+    //Note: given example use IsoDate.toLocalString, alternative you can use IsoDate.toUTCString.
+    function preJSON = function(obj, copyObj) {
 	var c = copyObj || {};
 	for (var i in obj) {
 		if (typeof obj[i] === 'function') {
@@ -64,9 +65,11 @@ function preJSON = function(obj, copyObj) {
 		}
 	}
 	return c;
-};
-//Convert all date-like String to Date in all properties of object.
-function postJSON = function(obj, copyObj) {
+    };
+    
+
+    //Convert all date-like String to Date in all properties of object.
+    function postJSON = function(obj, copyObj) {
 	var c = copyObj || {};
 	for (var i in obj) {
 		if (obj[i] != null && typeof obj[i] === 'object') {
@@ -80,8 +83,8 @@ function postJSON = function(obj, copyObj) {
 		}
 	}
 	return c;
-};
+    };
 
-var json = JSON.stringify(preJSON({date: new Date()}));
-var object = JSON.parse(postJSON(json));
-alert(object.date);
+    var json = JSON.stringify(preJSON({date: new Date()}));
+    var object = JSON.parse(postJSON(json));
+    alert(object.date);
