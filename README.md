@@ -50,13 +50,13 @@ JSON specification do NOT cover date type!
 There in no common practice to handle this.
 
 Some use number: 
-   
-   new Date().getTime()
-   
+    
+    new Date().getTime()
+    
 Some use special format (ASP.NET, WCF): 
-   
-   "\"\\/Date(" + this.getTime() + ")\\/\"";
-   
+    
+    "\"\\/Date(" + this.getTime() + ")\\/\"";
+    
 Following example use ISO format:
 
     //Convert all Date values to String in all properties of object.
