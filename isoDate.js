@@ -65,7 +65,7 @@ var isoDate = {
 			}
 
 			if (isTzSpecified) {
-				var utc = new Date();
+				var utc = new Date(1970, 1, 1);
 				utc.setUTCFullYear(match[0]);
 				utc.setUTCMonth(match[1]);
 				utc.setUTCDate(match[2]);
@@ -75,7 +75,7 @@ var isoDate = {
 				utc.setUTCMilliseconds(0);
 				return new Date(utc.getTime() + offset);
 			} else {
-				var date = new Date();
+				var date = new Date(new Date(1970, 1, 1));
 				date.setFullYear(match[0]);
 				date.setMonth(match[1]);
 				date.setDate(match[2]);
